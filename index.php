@@ -13,12 +13,28 @@
       width: 70%;
       margin: auto;
     }
+
+    .btn-custom {
+  height: 100%;
+    width:100%;
+    background: -webkit-linear-gradient(left, pink, black, black, black, black, black, pink); / For Safari 5.1 to 6.0 /
+    background: -o-linear-gradient(left, pink, black, black, black, black, black, pink); / For Opera 11.1 to 12.0 /
+    background: -moz-linear-gradient(left, pink, black, black, black, black, black, pink); / For Fx 3.6 to 15 /
+    background: linear-gradient(to right, pink, black, black, black, black, black, pink); / Standard syntax (must be last) /
+     position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0; 
+    color:white;
+}
+ .diva{
+  margin-top: 20%;
+    
+}
   </style>
 </head>
 <body>
-  <div class="container" style="background-color:white">
+  <div class="container diva" >
     <br>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide btn-custom" data-ride="carousel">
       <!-- Indicators -->
 
 
@@ -45,11 +61,25 @@
           echo '<h2>'.$row['fname'].' '. $row['lname'].'</h2>';
           
           $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'SWC' AND contcode= ".$row['contcode']);
-          
+          echo ' <table>
+              <tbody>';
             while($row1=mysqli_fetch_array($results2))
             {
-              echo '<h3> JUDGE '.$row1['judgcode'].' - '.$row1['score'].'</br>' ;
+              echo '
+             
+              <tr>
+              <td width="23%"></td>
+              <td> <h3> JUDGE '.$row1['judgcode'].'</h3></td>
+              <td width="60%"><h3>-</h3></td>
+              <td><h3>'.$row1['score'].'</h3> </td>
+              </tr>
+             
+             
+              ' ;
+
             }
+            echo ' </tbody>
+              </table>' ;
           echo '  </div>
           </div>
           ';
@@ -61,12 +91,12 @@
       <br>
       <div>
         <br>
-        <ol class="carousel-indicators">
+        <!-- <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
           <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
+        </ol> -->
       </div>
       <!-- Left and right controls -->
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -79,7 +109,12 @@
       </a>
     </div>
   </div>
-
+<script type="text/javascript">
+  $('#myCarousel').carousel({
+  interval: false,
+  wrap: false
+});
+</script>
 </body>
 </html>
 
