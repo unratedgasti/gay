@@ -35,7 +35,7 @@
   </style>
 </head>
 <body class="btn-custom carousel slide " id="myCarousel"   data-ride="carousel">
-  <div class="container diva" >
+  <div class="container " >
  
       <!-- Indicators -->
 
