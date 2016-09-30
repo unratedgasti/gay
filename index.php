@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Mr. Gay Philippines</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -69,18 +69,19 @@
               <tbody>';
             while($row1=mysqli_fetch_array($results2))
             {
-              echo '
-             
-              <tr>
+           
+              if($row1['judgcode'] != 12){
+                 echo '             
+              <tr >
               <td width="23%"></td>
-              <td> <h3> JUDGE '.$row1['judgcode'].'</h3></td>
+              <td > <h3 > JUDGE '.$var = ($row1['judgcode'] > 12 )? $row1['judgcode'] - 1 : $row1['judgcode']
+              .'</h3></td>
               <td width="60%"><h3>-</h3></td>
               <td><h3>'.$row1['score'].'</h3> </td>
-              </tr>
-             
+              </tr>         
              
               ' ;
-
+              }
             }
             echo ' </tbody>
               </table>' ;
