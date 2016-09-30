@@ -61,18 +61,18 @@
         {
         
           echo '<tr>';
-          echo '<td style="font-size:20px;"></br>'.$row['fname'].' '. $row['lname'].'</br></td>';
+          echo '<td style="font-size:20px;"></br>'.$row['fname'].' '. $row['lname'].'</td>';
           for($i=1;$i<=11;$i++)
           {
           $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'SWC' AND judgcode =".$i." AND contcode= ".$row['contcode']);
           $row2=mysqli_fetch_array($results2);
           if(count($row2)==0 || count($row2)==null)
           {
-          echo '<td style="font-size:18px; text-align:center"></br>0.00</br></td>';
+          echo '<td style="font-size:20px; text-align:center"></br>0.00</td>';
           }
           else
           {
-          echo '<td style="font-size:18px; text-align:center"></br>'.$row2['score'].'</br></td>';
+          echo '<td style="font-size:20px; text-align:center"></br>'.$row2['score'].'</td>';
           }
          
          
