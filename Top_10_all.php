@@ -23,7 +23,7 @@
 <body>
   <div class="container" id="grad1" >
     <div style="text-align:center; color: #ffffff">
-      <h1> TOP 15 
+      <h1> TOP 10 
       </h1>
     </div>
     <div style="color:white" align="center">
@@ -53,7 +53,7 @@
           echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
 
-        $results=mysqli_query($con,"SELECT * FROM events_contestant as ec LEFT JOIN contestant as c ON ec.contcode = c.contcode WHERE evntcode = 'SWC'");
+        $results=mysqli_query($con,"SELECT * FROM events_contestant as ec LEFT JOIN contestant as c ON ec.contcode = c.contcode WHERE evntcode = 'FWC'");
 
      
 
@@ -64,7 +64,7 @@
           echo '<td style="font-size:20px;"></br>'.$row['fname'].' '. $row['lname'].'</td>';
           for($i=1;$i<=11;$i++)
           {
-          $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'SWC' AND judgcode =".$i." AND contcode= ".$row['contcode']);
+          $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'FWC' AND judgcode =".$i." AND contcode= ".$row['contcode']);
           $row2=mysqli_fetch_array($results2);
           if(count($row2)==0 || count($row2)==null)
           {

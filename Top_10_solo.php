@@ -52,7 +52,7 @@
           echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
 
-        $results=mysqli_query($con,"SELECT * FROM events_contestant as ec LEFT JOIN contestant as c ON ec.contcode = c.contcode WHERE evntcode = 'SWC'");
+        $results=mysqli_query($con,"SELECT * FROM events_contestant as ec LEFT JOIN contestant as c ON ec.contcode = c.contcode WHERE evntcode = 'FWC'");
  //$row=mysqli_fetch_array($results);
         $active='active';
         while($row=mysqli_fetch_array($results))
@@ -64,20 +64,21 @@
           echo '<h2>'.$row['fname'].' '. $row['lname'].'</h2>';
           echo '<h3 style="color:white">'.$row['schlname'].'</h3><br><br>';
           
-          $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'SWC' AND contcode= ".$row['contcode']);
+          $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'FWC' AND contcode= ".$row['contcode']);
           echo ' <table>
               <tbody>';
             while($row1=mysqli_fetch_array($results2))
             {
               $var = ($row1['judgcode'] > 12 ) ? $row1['judgcode'] - 1 : $row1['judgcode'];
-              $score = ($row1['score'] == 0 || $row1['score'] == null) ? 0 : $row1['score'];
+              $score = ($row1['score'] == 0 || $row1['score'] == null) ? '0.00' : $row1['score'];
+           
               if($row1['judgcode'] != 12){
                  echo '             
               <tr >
               <td width="23%"></td>
               <td > <h3 > JUDGE '.$var.'</h3></td>
               <td width="60%"><h3>-</h3></td>
-              <td><h3>'. $score .'</h3> </td>
+              <td><h3>'.  $score .'</h3> </td>
               </tr>         
              
               ' ;
