@@ -26,20 +26,22 @@
     color:white;
 }
  .diva{
-  margin-top: 20%;
+  margin-top: 10%;
     
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
 }
   </style>
 </head>
-<body>
+<body class="btn-custom carousel slide " id="myCarousel"   data-ride="carousel">
   <div class="container diva" >
-    <br>
-    <div id="myCarousel" class="carousel slide btn-custom" data-ride="carousel">
+ 
       <!-- Indicators -->
 
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner"  role="listbox">
 
 
         <?php
@@ -55,10 +57,12 @@
         $active='active';
         while($row=mysqli_fetch_array($results))
         {
+
           echo ' <div class="item '.$active.'">
           <div style="text-align:center">';
 
           echo '<h2>'.$row['fname'].' '. $row['lname'].'</h2>';
+          echo '<h3 style="color:white">'.$row['schlname'].'</h3><br><br>';
           
           $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'SWC' AND contcode= ".$row['contcode']);
           echo ' <table>
@@ -108,7 +112,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </div>
+
 <script type="text/javascript">
   $('#myCarousel').carousel({
   interval: false,
