@@ -27,13 +27,12 @@
       </h1>
     </div>
     <div style="color:white" align="center">
-      <table width ="70%" style="font-size: 25px" border="white">
+      <table width ="70%" style="font-size: 25px" >
         <tr>
           <td width="30%" rowspan="2" align="center">Name</td>
           <td  width="60%" colspan="12" align="center">Judges</td>
         </tr>
         <tr>
-       
           <td  width="5.45%" align="center">1</td>
           <td  width="5.45%" align="center">2</td>
           <td  width="5.45%" align="center">3</td>
@@ -46,6 +45,42 @@
           <td  width="5.45%" align="center">10</td>
           <td  width="5.45%" align="center">11</td>
         </tr>
+         <?php
+        $con=mysqli_connect('localhost','root','','db_tabulation');
+
+        if (mysqli_connect_errno())
+        {
+          echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+
+        $results=mysqli_query($con,"SELECT * FROM events_contestant as ec LEFT JOIN contestant as c ON ec.contcode = c.contcode WHERE evntcode = 'SWC'");
+
+     
+
+        while($row=mysqli_fetch_array($results))
+        {
+        
+          echo '<tr>';
+          echo '<td style="font-size:20px;"></br>'.$row['fname'].' '. $row['lname'].'</br></td>';
+          for($i=1;$i<=11;$i++)
+          {
+          $results2=mysqli_query($con,"SELECT * FROM scores WHERE evntcode = 'SWC' AND judgcode =".$i." AND contcode= ".$row['contcode']);
+          $row2=mysqli_fetch_array($results2);
+          if(count($row2)==0 || count($row2)==null)
+          {
+          echo '<td style="font-size:18px; text-align:center"></br>0.00</br></td>';
+          }
+          else
+          {
+          echo '<td style="font-size:18px; text-align:center"></br>'.$row2['score'].'</br></td>';
+          }
+         
+         
+        }
+         echo '</tr>';
+      }
+       
+        ?>
 
       </div>
       <div>
