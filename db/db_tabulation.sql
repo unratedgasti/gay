@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2016 at 11:36 AM
+-- Generation Time: Sep 30, 2016 at 10:31 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -192,7 +192,9 @@ INSERT INTO `events_contestant` (`evntcode`, `contcode`, `ordrnmbr`, `scored`) V
 ('MGP', 33, 33, '0'),
 ('MGP', 34, 34, '0'),
 ('SWC', 1, 1, '0'),
-('SWC', 2, 2, '0');
+('SWC', 2, 2, '0'),
+('FWC', 2, 1, '0'),
+('FWC', 3, 2, '0');
 
 -- --------------------------------------------------------
 
@@ -497,7 +499,9 @@ INSERT INTO `scores` (`contcode`, `evntcode`, `judgcode`, `critcode`, `score`) V
 (33, 'MGP', 12, 'MFW', 8.79),
 (34, 'MGP', 12, 'MFW', 9.43),
 (1, 'SWC', 1, 'SWS', 10.10),
-(1, 'SWC', 2, 'SWS', 8.20);
+(1, 'SWC', 2, 'SWS', 8.20),
+(2, 'FWC', 1, 'FWS', NULL),
+(2, 'FWC', 2, 'FWS', NULL);
 
 -- --------------------------------------------------------
 
